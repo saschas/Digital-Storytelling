@@ -9584,7 +9584,7 @@ TweetVis = (function() {
 tweetLoader = new TweetLoader();
 
 if (!tweetLoader.testTweet()) {
-  alert('Not on a tweet; Navigate to a tweet and try again');
+  alert('Ndsf');
 } else {
   tweetVis = new TweetVis();
   tweetVis.init();
