@@ -7,32 +7,14 @@ $(".scroll").click(function(event){
 
 // header fade
 $(window).scroll(function() {
-        $(".text-vertical-center").css({
+        $(".topfade").css({
          'opacity' : 1-(($(this).scrollTop())/350)
             });    
     
 }); 
 
 
-//Scrollsnap
-
-$(document).scroll(function() {
-    $("div:not(.highlight)").each(function() {
-        if (isScrolledIntoView(this)) {
-           $("div").removeClass("highlight");
-           $(this).addClass("highlight");
-           $("body").animate({ scrollTop: $(this).offset().top }, 1000)
-        }
-    });
+//snap
+$(".snapping").snapPoint({ 
+    scrollSpeed: 200,
 });
-
-function isScrolledIntoView(elem)
-{
-    var docViewTop = $(window).scrollTop();
-    var docViewBottom = docViewTop + $(window).height();
-
-    var elemTop = $(elem).offset().top;
-    var elemBottom = elemTop + $(elem).height();
-
-    return (elemTop <= docViewBottom) && (elemTop > docViewTop);
-}​
