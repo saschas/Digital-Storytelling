@@ -24,3 +24,5 @@ $(".snapping").snapPoint({
 
 var dynamicuservar = "fabuchao";
 var dynamicidvar = "605369199549132800";
+
+

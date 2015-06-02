@@ -87,6 +87,14 @@ h3{
     z-index: 9999;
 }
 
+#treewrapper h4{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 0.8em;
+    z-index: 9999;
+}
+
 
 /*STORY WRAPPER*/
 
