@@ -18,9 +18,3 @@ $(window).scroll(function() {
 $(".snapping").snapPoint({ 
     scrollSpeed: 200,
 });
-
-
-//twitter tweetloader var
-
-var dynamicuservar = "fabuchao";
-var dynamicidvar = "605369199549132800";
