@@ -82,11 +82,3 @@ h3{
     height: 100%;
    	background: #222222;
 }
-
-#treewrapper img{
-	position: absolute;
-	width: 60%;
-	height: auto;
-	left: 20%;
-	top: 20%;
-}
