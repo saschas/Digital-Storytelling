@@ -1,0 +1,57 @@
+      "id": "605369199549132800",
+      "accountname": "@fabuchao",
+      "parent": "null",
+      "text": "Es war einmal ein Mann namens Testibald.",
+      "children": [{
+        "id": "605369594220539904",
+        "accountname": "@vinni_le_cochon",
+        "parent": "605369199549132800",
+        "text": "Er hatte zwei große Hände mit dennen er ganz schnell Tippen konnte.",
+        "children":[{
+          "id": "605369903017828352",
+          "accountname": "@fabuchao",
+          "parent": "605369594220539904",
+          "text": "Aber eines Tages, in einer kleinen Gasse, kam ein maskierter Mann mit einer roten Axt.",
+          "children":[{}]
+          }]
+        }
+      ]
+    
+
+
+
+
+
+
+
+"id": "605369594220539904",
+"accountname": "@vinni_le_cochon",
+"parent": "605369199549132800",
+"text": "Er hatte zwei große Hände mit dennen er ganz schnell Tippen konnte.",
+"children":[{}]
+
+
+
+      {
+        "accountname": "Level 2: A",
+        "parent": "Top Level",
+        "children": [
+          {
+            "accountname": "Son of A",
+            "parent": "Level 2: A"
+          },
+          {
+            "accountname": "Daughter of A",
+            "parent": "Level 2: A"
+          }
+        ]
+      },
+      {
+        "accountname": "Level 2: B",
+        "parent": "Top Level"
+      },
+      {
+        "accountname": "Level 2: ",
+        "parent": "Top Level"
+      }
+    ]

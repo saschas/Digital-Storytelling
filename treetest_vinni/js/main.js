@@ -22,16 +22,18 @@ var treeData = [
       {
         "name": "Level 2: B",
         "parent": "Top Level"
+      },
+      {
+        "name": "Level 2: ",
+        "parent": "Top Level"
       }
     ]
   }
 ];
 
+var treeDataneu = [];
 
 $( "#derKnopf" ).click(function() {
-
-
-
 // ************** Generate the tree diagram  *****************
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
  width = 960 - margin.right - margin.left,
@@ -41,8 +43,7 @@ var i = 0;
 
 var tree = d3.layout.tree().size([height, width]);
 
-var diagonal = d3.svg.diagonal()
- .projection(function(d) { return [d.y, d.x]; });
+var diagonal = d3.svg.diagonal().projection(function(d) { return [d.y, d.x]; });
 
 var svg = d3.select("body").append("svg")
  .attr("width", width + margin.right + margin.left)
@@ -77,6 +78,9 @@ function update(source) {
    .attr("r", 10)
    .style("fill", "#fff");
 
+
+//pkatziert links bei Kindern und rechts ohne Kinder
+
   nodeEnter.append("text")
    .attr("x", function(d) { 
     return d.children || d._children ? -13 : 13; })
@@ -97,4 +101,18 @@ function update(source) {
 
 }
 
+});
+
+
+
+$( "#derKnopfsave" ).click(function() {
+  alert("nothing yet");
+});
+
+$( "#derKnopfdelete" ).click(function() {
+  alert("nothing yet");
+});
+
+$( "#derKnopfrenderagain" ).click(function() {
+  alert("nothing yet");
 });
