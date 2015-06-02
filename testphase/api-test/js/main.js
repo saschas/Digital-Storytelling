@@ -9405,6 +9405,10 @@ TweetLoader = (function() {
       url = "/" + user + "/status/" + tweetId;
       return d3.json(url).header('x-push-state-request', 'true').get((function(_this) {
         return function(error, data) {
+
+          console.log(url);
+          console.log(data);
+
           var doc, parentDiv, parser, tweetDiv;
           parser = new window.DOMParser();
           doc = parser.parseFromString(data.page, 'text/html');
@@ -9438,6 +9442,8 @@ TweetLoader = (function() {
     url = "/i/" + user + "/conversation/" + tweetId + "?include_available_features=1&include_entities=1&max_position=" + max_position;
     return d3.json(url).header('x-push-state-request', 'true').get((function(_this) {
       return function(error, data) {
+
+
         var doc, i, parser, tweetQueue;
         parser = new window.DOMParser();
         doc = parser.parseFromString(data.items_html, 'text/html');
