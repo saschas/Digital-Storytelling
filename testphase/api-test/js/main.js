@@ -9500,7 +9500,7 @@ TweetVis = (function() {
       return d3.select('#tweetvis').remove();
     });
     
-    clog(this.div.append('p').selectAll('span'));
+    clog(this.div.append('p').selectAll('div'));
     this.div.append('p').text('Reply times: ').style('position', 'absolute').style('top', '20px').style('left', '20px').style('color', '#ddd').selectAll('span').data(d3.zip(timeColors.humanIntervals, timeColors.colors)).enter().append('span').text(function(d) {
       return d[0] + ' ';
     }).style('color', function(d) {
