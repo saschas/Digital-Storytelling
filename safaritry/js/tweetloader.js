@@ -249,21 +249,20 @@
     TweetVis.prototype.makeSVG = function() {
       var container;
       d3.select('#tweetvis').remove();
-      container = d3.select('#treewrapper');
+      container = d3.select('body');
       d3.select(window).on('popstate', function() {
         return d3.select('#tweetvis').remove();
       });
       this.div = container.append('div').attr('id', 'tweetvis').style('position', 'relative').style('left', 0).style('top', 0).style('bottom', 0).style('right', 0).style('z-index', 1001).style('background-color', '#222');
       
-      // this.div.append('p').text('Reply times: ').style('position', 'absolute').style('top', '20px').style('left', '20px').style('color', '#ddd').selectAll('span').data(d3.zip(timeColors.humanIntervals, timeColors.colors)).enter().append('span').text(function(d) {
-      //   return d[0] + ' ';
-      // }).style('color', function(d) {
-      //   return d[1];
-      // }).style('margin-left', '20px');
+      this.div.append('p').text('Reply times: ').style('position', 'absolute').style('top', '20px').style('left', '20px').style('color', '#ddd').selectAll('span').data(d3.zip(timeColors.humanIntervals, timeColors.colors)).enter().append('span').text(function(d) {
+        return d[0] + ' ';
+      }).style('color', function(d) {
+        return d[1];
+      }).style('margin-left', '20px');
       this.svg = this.div.append('svg:svg');
       var varwindowheight = $( window ).height();
-      // this.svg.attr('id', 'tweetvis_svg').attr('height', varwindowheight + 'px').attr('width', '100%');
-      this.svg.attr('id', 'tweetvis_svg').attr('height', '600px').attr('width', '100%');
+      this.svg.attr('id', 'tweetvis_svg').attr('height', varwindowheight + 'px').attr('width', '100%');
       this.svg.append('g').attr('id', 'edges');
       this.svg.append('g').attr('id', 'nodes');
       return this.svg.append('g').attr('id', 'details');

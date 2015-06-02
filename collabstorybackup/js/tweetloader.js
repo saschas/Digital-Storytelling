@@ -6,7 +6,7 @@
   timeColors = {
     intervals: [300, 600, 3600, 10800],
     humanIntervals: ['5 min', '10 min', '1 hour', '3 hours+'],
-    colors: ['#FA5050', '#E9FA50', '#F5F1D3', '#47D8F5']
+    colors: ['#fff', '#fff', '#fff', '#fff']
   };
 
   tooltip = function(tweet) {
@@ -18,7 +18,17 @@
     d3.select('#tweetPopup').remove();
     apop = d3.select('svg').append('a').attr('id', 'tweetPopup').attr('xlink:href', tweet.url).attr('target', '_blank').style('text-decoration', 'none');
     tpop = apop.append('g').attr('opacity', 0);
-    text = tpop.append('text').text(tweet.content).attr('transform', "translate(" + (imageSize + 2 * margin) + " 20)");
+
+
+
+    var cleantweet = tweet.content;
+    cleantweet = cleantweet.replace(/(^|\W)#(\w+)/ , '');
+
+
+    text = tpop.append('text').text(cleantweet).attr('transform', "translate(" + (imageSize + 2 * margin) + " 20)");
+
+
+
     image = tpop.append('image').attr('xlink:href', tweet.avatar).attr('height', imageSize).attr('width', imageSize).attr('x', margin).attr('y', margin);
     user = tpop.append('text').text("@" + tweet.name).attr('font-weight', 'bold').attr('y', 12 + margin).attr('x', imageSize + 2 * margin);
     wrap(text, 250);
@@ -253,7 +263,7 @@
       d3.select(window).on('popstate', function() {
         return d3.select('#tweetvis').remove();
       });
-      this.div = container.append('div').attr('id', 'tweetvis').style('position', 'relative').style('left', 0).style('top', 0).style('bottom', 0).style('right', 0).style('z-index', 1001).style('background-color', '#222');
+      this.div = container.append('div').attr('id', 'tweetvis').style('position', 'absolute').style('left', 0).style('top', 0).style('bottom', 0).style('right', 0).style('z-index', 1).style('background-color', 'tomato');
       
       // this.div.append('p').text('Reply times: ').style('position', 'absolute').style('top', '20px').style('left', '20px').style('color', '#ddd').selectAll('span').data(d3.zip(timeColors.humanIntervals, timeColors.colors)).enter().append('span').text(function(d) {
       //   return d[0] + ' ';
@@ -261,9 +271,7 @@
       //   return d[1];
       // }).style('margin-left', '20px');
       this.svg = this.div.append('svg:svg');
-      var varwindowheight = $( window ).height();
-      // this.svg.attr('id', 'tweetvis_svg').attr('height', varwindowheight + 'px').attr('width', '100%');
-      this.svg.attr('id', 'tweetvis_svg').attr('height', '600px').attr('width', '100%');
+      this.svg.attr('id', 'tweetvis_svg').attr('height', '100%').attr('width', '100%');
       this.svg.append('g').attr('id', 'edges');
       this.svg.append('g').attr('id', 'nodes');
       return this.svg.append('g').attr('id', 'details');
