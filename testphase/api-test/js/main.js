@@ -9406,8 +9406,8 @@ TweetLoader = (function() {
       return d3.json(url).header('x-push-state-request', 'true').get((function(_this) {
         return function(error, data) {
 
-          console.log(url);
-          console.log(data);
+          //console.log(url);
+          //console.log(data);
 
           var doc, parentDiv, parser, tweetDiv;
           parser = new window.DOMParser();
