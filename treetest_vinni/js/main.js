@@ -45,20 +45,16 @@ data.forEach(function(node) {
 });
 
 
-var windowhoehe = $(window).height();
-var windowbreite = $(window).width();
-
-
 
 function drawtree() {
+var margin, windowwidth, windowheight, nodesize, animDuration;
+width = window.innerWidth;
+height = window.innerHeight;
+margin = 60;
+nodesize = 10;
+animDuration = 300;  //no influence yet
 
 
-
-// ************** Generate the tree diagram  *****************
-//width und height sind vertauscht weil der Graph spaeter gedreht wird.//
-var margin = {top: 20, right: 0, bottom: 20, left: 0},
- width = windowbreite,
- height = windowhoehe * 0.5;
  
 var i = 0;
 
@@ -67,10 +63,10 @@ var tree = d3.layout.tree().size([width, height]);
 var diagonal = d3.svg.diagonal().projection(function(d) { return [d.x, d.y]; });
 
 var svg = d3.select("body").append("svg")
- .attr("height", height + margin.right + margin.left)
- .attr("width", width + margin.top + margin.bottom)
+ .attr("height", height + margin + margin)
+ .attr("width", width + margin + margin)
   .append("g")
- .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+ .attr("transform", "translate(" + margin + "," + margin + ")");
 
 root = treeData[0];
   
@@ -97,7 +93,7 @@ function update(source) {
     return "translate(" + d.x + "," + d.y + ")"; });
 
   nodeEnter.append("circle")
-   .attr("r", 10)
+   .attr("r", nodesize)
    .style("fill", "#fff");
 
 
@@ -131,14 +127,26 @@ function update(source) {
    .attr("d", diagonal);
 
 }
+
+
+
 }
 
 
-$( window ).resize(function() {
+
+
+$( document ).ready(function() {
   var windowhoehe = $(window).height();
 var windowbreite = $(window).width();
 drawtree();
 });
+
+
+// $( window ).resize(function() {
+//   var windowhoehe = $(window).height();
+// var windowbreite = $(window).width();
+// drawtree();
+// });
 
 
 
