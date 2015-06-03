@@ -35,7 +35,7 @@ body {
     z-index: 3; 
 }
 
-.test {
+.schrift {
     display: flex;
     justify-content: left;
 
@@ -47,25 +47,18 @@ body {
 }
 
 h1{
-    font-weight: 700;
+    background: red;
+    font-weight: 300;
 	color: #3D444C;
-	font-family: 'Muli', sans-serif;
+	font-family: 'Roboto Slab', serif;
 }
 
-h1 img{  
-
-}
 
 h3{
 	font-family: 'Muli', sans-serif;
 	color: white;
 }
 
-span {
-    font-family: 'Roboto Slab', serif;
-    font-size: .4em;
-    font-weight: 300;
-}
 /*Button Header */
 
 .btn-header {
