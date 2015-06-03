@@ -1,7 +1,7 @@
 
 var treeDataneu = [];
 
-
+//JSON DATA zum testen//
 
 var data = [
     { "name" : "605369199549132800", "parent" : "null", "accountname": "@fabuchao", "text": "Es war einmal ein Mann namens Testibald."  },
@@ -50,18 +50,18 @@ data.forEach(function(node) {
 // ************** Generate the tree diagram  *****************
 //width und height sind vertauscht weil der Graph spaeter gedreht wird.//
 var margin = {top: 20, right: 20, bottom: 20, left: 20},
- width = 1500 - margin.right - margin.left,
+ width = 500 - margin.right - margin.left,
  height = 1500 - margin.top - margin.bottom;
  
 var i = 0;
 
-var tree = d3.layout.tree().size([height, width]);
+var tree = d3.layout.tree().size([width, height]);
         //x&y vertauscht fuer vertical
 var diagonal = d3.svg.diagonal().projection(function(d) { return [d.x, d.y]; });
 
 var svg = d3.select("body").append("svg")
- .attr("width", width + margin.right + margin.left)
- .attr("height", height + margin.top + margin.bottom)
+ .attr("height", height + margin.right + margin.left)
+ .attr("width", width + margin.top + margin.bottom)
   .append("g")
  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -128,7 +128,6 @@ function update(source) {
 
 $( "#derKnopf" ).click(function() {
 });
-
 
 
 $( "#derKnopfsave" ).click(function() {
