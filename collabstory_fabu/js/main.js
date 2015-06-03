@@ -29,14 +29,23 @@ var dynamicidvar = "605369199549132800";
 //
 
 
-var storywrapperposition = $("#storywrapper").offset().top;
+// var storywrapperposition = $("#storywrapper").offset().top;
 
-$(document).scroll(function(){
-    if($(this).scrollTop() == storywrapperposition)
-    {   
-       $('#pinheader').fadeIn('fast');
-    }
-    else{
-    	 $('#pinheader').fadeOut('fast');
-    }
-});
+// $(document).scroll(function(){
+//     if($(this).scrollTop() >= storywrapperposition)
+//     {   
+//        $('#pinheader').fadeIn('fast');
+//     }
+//     else{
+//     	 $('#pinheader').fadeOut('fast');
+//     }
+// });
+
+
+
+$("#treewrapper").click(function(){
+    $("#storywrapper").show();
+    $('html, body').animate({
+        scrollTop: $("#storywrapper").offset().top
+    }, 500);
+})

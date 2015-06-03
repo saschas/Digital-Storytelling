@@ -123,18 +123,29 @@ h3{
   padding-left: 10%;
   padding-right: 10%;
   text-align: center;
+  display: none;
 }
+
 
 .storytext{
     width: 100%;
     background:transparent;
     -webkit-column-count: 2;
+    -moz-column-count: 2;
+    -o-column-count: 2;
     margin-top: 70px;
+    margin-bottom: 100px;
 }
 #storywrapper h1{
     color: red;
     font-size: 2em;
-    margin-top: 100px;
+    margin-top: 130px;
+}
+
+#storywrapper h1 img{
+
+    width: 30%;
+    height: auto;
 }
 #storywrapper h2{
     color: red;
@@ -150,7 +161,11 @@ h3{
     font-size: 1em;
     color: #333;
     text-align: left;
+}
 
+#storywrapper h2:after{
+    content: "  •••";
+    color: #e30513;
 }
 
 
@@ -165,12 +180,20 @@ h3{
     width: 100%;
     background:transparent;
     -webkit-column-count: 1;
-    -webkit-column-width: 1px;
-    margin-top: 70px;   
+    -moz-column-count: 1;
+    -o-column-count: 1;
+    margin-top: 30px;   
     }
     #storywrapper h2{
     padding-left: 10%;
     padding-right: 10%;
+    font-size: 1.6em;
+}
+
+#storywrapper h1 img{
+
+    width: 70%;
+    height: auto;
 }
 
 }
