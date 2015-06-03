@@ -1,49 +1,63 @@
 
-
-var treeData = [
-  {
-    "name": "Top Level",
-    "parent": "null",
-    "children": [
-      {
-        "name": "Level 2: A",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Son of A",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Daughter of A",
-            "parent": "Level 2: A"
-          }
-        ]
-      },
-      {
-        "name": "Level 2: B",
-        "parent": "Top Level"
-      },
-      {
-        "name": "Level 2: ",
-        "parent": "Top Level"
-      }
-    ]
-  }
-];
-
 var treeDataneu = [];
 
-$( "#derKnopf" ).click(function() {
+
+
+var data = [
+    { "name" : "605369199549132800", "parent" : "null", "accountname": "@fabuchao", "text": "Es war einmal ein Mann namens Testibald."  },
+    { "name" : "605369594220539904", "parent" : "605369199549132800", "accountname" : "@vinni_le_cochon", "text": "Er hatte zwei große Hände mit dennen er ganz schnell Tippen konnte."  },
+    { "name" : "605369903017828352", "parent" : "605369594220539904", "accountname" : "@fabuchao", "text": "Aber eines Tages, in einer kleinen Gasse, kam ein maskierter Mann mit einer roten Axt."  },
+
+    { "name" : "605372296677732352", "parent" : "605369903017828352", "accountname" : "@SaschaSigl", "text": "neben der Axt hatte er auch eine blaue pasmakanone."  },
+    { "name" : "605370232782372864", "parent" : "605369903017828352", "accountname" : "@vinni_le_cochon", "text": "Seine großen Hände waren ihm aufgefallen und er fragte sich ob es überhaupt Handschuhe in dieser Größe gab."  },
+    { "name" : "605370756395069442", "parent" : "605370232782372864", "accountname" : "@vinni_le_cochon", "text": "Testibald war schockiert. Er wusste bis dato nicht, dass er so große Hände hatte."  },
+   
+    { "name" : "605781370040745986", "parent" : "605370756395069442", "accountname" : "@fabuchao", "text": "Test Test #hashtag Tet Test"  },
+    { "name" : "605756325897859073", "parent" : "605370756395069442", "accountname" : "@vinni_le_cochon", "text": "und er dachte sich: was machen denn Franz und Jeisson hier?!"  },
+
+    { "name" : "605374015381905408", "parent" : "605370232782372864", "accountname" : "@TrancePhillip", "text": "Die rote Axt hingegen schwang bereits gefährlich nahe an dem Marktstand des runzligen Rainers vorbei. "  },
+    { "name" : "605410537661431808", "parent" : "605374015381905408", "accountname" : "@se", "text": "»Wer kommt denn auf die Idee in einer solch schmalen Gasse einen Marktstand aufzubauen« grübelte Testibald als plötzlich"  },
+    { "name" : "605463847131054080", "parent" : "605410537661431808", "accountname" : "@vinni_le_cochon", "text": "ein riesengroßer Zwerg auf ihn zukam und fragte:"  },
+
+
+];
+
+
+
+var dataMap = data.reduce(function(map, node) {
+ map[node.name] = node;
+ return map;
+}, {});
+
+var treeData = [];
+data.forEach(function(node) {
+ // add to parent
+ var parent = dataMap[node.parent];
+ if (parent) {
+  // create child array if it doesn't exist
+  (parent.children || (parent.children = []))
+   // add node to child array
+   .push(node);
+ } else {
+  // parent is null or missing
+  treeData.push(node);
+ }
+});
+
+
+
+
 // ************** Generate the tree diagram  *****************
-var margin = {top: 20, right: 120, bottom: 20, left: 120},
- width = 960 - margin.right - margin.left,
- height = 500 - margin.top - margin.bottom;
+//width und height sind vertauscht weil der Graph spaeter gedreht wird.//
+var margin = {top: 20, right: 20, bottom: 20, left: 20},
+ width = 1500 - margin.right - margin.left,
+ height = 1500 - margin.top - margin.bottom;
  
 var i = 0;
 
 var tree = d3.layout.tree().size([height, width]);
-
-var diagonal = d3.svg.diagonal().projection(function(d) { return [d.y, d.x]; });
+        //x&y vertauscht fuer vertical
+var diagonal = d3.svg.diagonal().projection(function(d) { return [d.x, d.y]; });
 
 var svg = d3.select("body").append("svg")
  .attr("width", width + margin.right + margin.left)
@@ -62,7 +76,7 @@ function update(source) {
    links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 180; });
+  nodes.forEach(function(d) { d.y = d.depth * 90; });
 
   // Declare the nodesâ€¦
   var node = svg.selectAll("g.node")
@@ -72,25 +86,35 @@ function update(source) {
   var nodeEnter = node.enter().append("g")
    .attr("class", "node")
    .attr("transform", function(d) { 
-    return "translate(" + d.y + "," + d.x + ")"; });
+            //x&y vertauscht fuer vertical
+    return "translate(" + d.x + "," + d.y + ")"; });
 
   nodeEnter.append("circle")
    .attr("r", 10)
    .style("fill", "#fff");
 
 
-//pkatziert links bei Kindern und rechts ohne Kinder
+//pkatziert accountname darüber
 
   nodeEnter.append("text")
    .attr("x", function(d) { 
-    return d.children || d._children ? -13 : 13; })
+    return d.children || d._children ? 25 : 25; })
    .attr("dy", ".35em")
    .attr("text-anchor", function(d) { 
     return d.children || d._children ? "end" : "start"; })
-   .text(function(d) { return d.name; })
+   .text(function(d) { return d.accountname; })
    .style("fill-opacity", 1);
 
-  // Declare the linksâ€¦
+   //Text darunter
+     nodeEnter.append("text")   
+   .attr("y", function(d) {return d.children || d._children ? 25 : 25; })       //WIE FUNKTioNIeRT DAS????//
+   .attr("dy", ".35em")
+   .attr("text-anchor", function(d) { 
+    return d.children || d._children ? "end" : "start"; })
+   .text(function(d) { return d.text; })
+   .style("fill-opacity", 1);
+
+  // Declare the links¦
   var link = svg.selectAll("path.link")
    .data(links, function(d) { return d.target.id; });
 
@@ -101,6 +125,8 @@ function update(source) {
 
 }
 
+
+$( "#derKnopf" ).click(function() {
 });
 
 

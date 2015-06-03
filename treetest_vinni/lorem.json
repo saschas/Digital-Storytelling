@@ -1,3 +1,42 @@
+
+var data = [
+    { "name" : "605369199549132800", "parent" : "null", "accountname": "@fabuchao", "text": "Es war einmal ein Mann namens Testibald."  },
+    { "name" : "605369594220539904", "parent" : "605369199549132800", "accountname" : "@vinni_le_cochon", "text": "Er hatte zwei große Hände mit dennen er ganz schnell Tippen konnte."  },
+    { "name" : "605369903017828352", "parent" : "605369594220539904", "accountname" : "@fabuchao", "text": "Aber eines Tages, in einer kleinen Gasse, kam ein maskierter Mann mit einer roten Axt."  },
+
+    { "name" : "605372296677732352", "parent" : "605369903017828352", "accountname" : "@SaschaSigl", "text": "neben der Axt hatte er auch eine blaue pasmakanone."  },
+    { "name" : "605370232782372864", "parent" : "605369903017828352", "accountname" : "@vinni_le_cochon", "text": "Seine großen Hände waren ihm aufgefallen und er fragte sich ob es überhaupt Handschuhe in dieser Größe gab."  },
+    { "name" : "605370756395069442", "parent" : "605370232782372864", "accountname" : "@vinni_le_cochon", "text": "Testibald war schockiert. Er wusste bis dato nicht, dass er so große Hände hatte."  },
+   
+    { "name" : "605781370040745986", "parent" : "605370756395069442", "accountname" : "@fabuchao", "text": "Test Test #hashtag Tet Test"  },
+    { "name" : "605756325897859073", "parent" : "605370756395069442", "accountname" : "@vinni_le_cochon", "text": "und er dachte sich: was machen denn Franz und Jeisson hier?!"  },
+
+    { "name" : "605374015381905408", "parent" : "605370232782372864", "accountname" : "@TrancePhillip", "text": "Die rote Axt hingegen schwang bereits gefährlich nahe an dem Marktstand des runzligen Rainers vorbei. "  },
+    { "name" : "605410537661431808", "parent" : "605374015381905408", "accountname" : "@se", "text": "»Wer kommt denn auf die Idee in einer solch schmalen Gasse einen Marktstand aufzubauen« grübelte Testibald als plötzlich"  },
+    { "name" : "605463847131054080", "parent" : "605410537661431808", "accountname" : "@vinni_le_cochon", "text": "ein riesengroßer Zwerg auf ihn zukam und fragte:"  },
+
+
+];
+
+
+    { "name" : "xx", "parent" : "", "accountname" : "@", "text": "xx"  },
+
+
+
+var data = [
+    { "name" : "Level 2: A", "parent":"Top Level" },
+    { "name" : "Top Level", "parent":"null" },
+    { "name" : "Son of A", "parent":"Level 2: A" },
+    { "name" : "Daughter of A", "parent":"Level 2: A" },
+    { "name" : "Level 2: B", "parent":"Top Level" }
+    ];
+
+
+
+
+
+
+
       "id": "605369199549132800",
       "accountname": "@fabuchao",
       "parent": "null",
@@ -12,7 +51,12 @@
           "accountname": "@fabuchao",
           "parent": "605369594220539904",
           "text": "Aber eines Tages, in einer kleinen Gasse, kam ein maskierter Mann mit einer roten Axt.",
-          "children":[{}]
+          "children":[{
+            "id": "605372296677732352",
+            "accountname": "@SaschaSigl",
+            "parent": "605369903017828352",
+            "text": "Er hatte zwei große Hände mit dennen er ganz schnell Tippen konnte.",
+            }]
           }]
         }
       ]
