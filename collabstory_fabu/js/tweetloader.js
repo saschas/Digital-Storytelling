@@ -269,7 +269,7 @@
       d3.select(window).on('popstate', function() {
         return d3.select('#tweetvis').remove();
       });
-      this.div = container.append('div').attr('id', 'tweetvis').style('position', 'absolute').style('left', 0).style('top', '10vh').style('bottom', 0).style('right', 0).style('z-index', 1).style('background-color', '#ccc');
+      this.div = container.append('div').attr('id', 'tweetvis').style('position', 'absolute').style('left', 0).style('top', 0).style('bottom', 0).style('right', 0).style('z-index', 1).style('background-color', '#ccc');
       
       // this.div.append('p').text('Reply times: ').style('position', 'absolute').style('top', '20px').style('left', '20px').style('color', '#ddd').selectAll('span').data(d3.zip(timeColors.humanIntervals, timeColors.colors)).enter().append('span').text(function(d) {
       //   return d[0] + ' ';

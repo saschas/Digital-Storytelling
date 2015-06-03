@@ -27,3 +27,16 @@ var dynamicidvar = "605369199549132800";
 
 
 //
+
+
+var storywrapperposition = $("#storywrapper").offset().top;
+
+$(document).scroll(function(){
+    if($(this).scrollTop() == storywrapperposition)
+    {   
+       $('#pinheader').fadeIn('fast');
+    }
+    else{
+    	 $('#pinheader').fadeOut('fast');
+    }
+});
