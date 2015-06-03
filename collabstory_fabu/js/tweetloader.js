@@ -13,30 +13,36 @@
     var apop, height, hideTooltip, image, imageSize, margin, sinkSize, text, tpop, user, width, x, y, _ref;
     x = d3.select(this).attr('x');
     y = d3.select(this).attr('y');
-    imageSize = 48;
+    imageSize = 0;
     margin = 8;
     d3.select('#tweetPopup').remove();
-    apop = d3.select('svg').append('a').attr('id', 'tweetPopup').attr('xlink:href', tweet.url).attr('target', '_blank').style('text-decoration', 'none');
+    apop = d3.select('svg').append('a').attr('id', 'tweetPopup').style('text-decoration', 'none');
+    // apop = d3.select('svg').append('a').attr('id', 'tweetPopup').attr('xlink:href', tweet.url).attr('target', '_blank').style('text-decoration', 'none');
     tpop = apop.append('g').attr('opacity', 0);
 
 
-
+    /* CLEAN THE TWEET, REMOVE HASHTAGS*/
     var cleantweet = tweet.content;
     cleantweet = cleantweet.replace(/(^|\W)#(\w+)/ , '');
+    text = tpop.append('text').text('«'+cleantweet+'»').attr('transform', "translate(" + (2 * margin) + " 13)").attr('font-size','18px');
 
 
-    text = tpop.append('text').text(cleantweet).attr('transform', "translate(" + (imageSize + 2 * margin) + " 20)");
 
 
-
-    image = tpop.append('image').attr('xlink:href', tweet.avatar).attr('height', imageSize).attr('width', imageSize).attr('x', margin).attr('y', margin);
-    user = tpop.append('text').text("@" + tweet.name).attr('font-weight', 'bold').attr('y', 12 + margin).attr('x', imageSize + 2 * margin);
+    // image = tpop.append('image').attr('xlink:href', tweet.avatar).attr('height', imageSize).attr('width', imageSize).attr('x', margin).attr('y', margin);
+    
+    // USER NAME//
+    // user = tpop.append('text').text("@" + tweet.name).attr('transform', "translate(" + (2 * margin) + " 100)").attr('color','red');
+    
     wrap(text, 250);
-    _ref = tpop.node().getBBox(), height = _ref.height, width = _ref.width;
+
+    _ref = tpop.node().getBBox(), height = _ref.height + 20, width = _ref.width + 20;
     hideTooltip = function() {
       return apop.transition().duration(200).attr('opacity', 0).remove();
     };
-    tpop.insert('rect', ':first-child').attr('width', width + 2 * margin).attr('height', height + 2 * margin).attr('fill', 'white').attr('rx', 5).attr('opacity', 0.9).on('mouseover', hideTooltip);
+
+    /* WIDTH STYLE VOM TOOLTIP HOVER BOX*/
+    tpop.insert('rect', ':first-child').attr('width', width + 2 * margin + 30).attr('height', height + 2 * margin).attr('fill', '#ccc').attr('stroke-width', '1px').attr('stroke', '#e30513').attr('rx', 5).attr('opacity', 1).on('mouseover', hideTooltip);
     x -= width / 2 + margin;
     y -= height / 2 + margin;
     sinkSize = 24;
@@ -370,3 +376,6 @@
   }
 
 }).call(this);
+
+
+
