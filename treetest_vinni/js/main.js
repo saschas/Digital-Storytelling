@@ -45,13 +45,20 @@ data.forEach(function(node) {
 });
 
 
+var windowhoehe = $(window).height();
+var windowbreite = $(window).width();
+
+
+
+function drawtree() {
+
 
 
 // ************** Generate the tree diagram  *****************
 //width und height sind vertauscht weil der Graph spaeter gedreht wird.//
-var margin = {top: 20, right: 20, bottom: 20, left: 20},
- width = 500 - margin.right - margin.left,
- height = 1500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 0, bottom: 20, left: 0},
+ width = windowbreite,
+ height = windowhoehe * 0.5;
  
 var i = 0;
 
@@ -76,7 +83,7 @@ function update(source) {
    links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 90; });
+  nodes.forEach(function(d) { d.y = d.depth * 80; });
 
   // Declare the nodesâ€¦
   var node = svg.selectAll("g.node")
@@ -124,9 +131,20 @@ function update(source) {
    .attr("d", diagonal);
 
 }
+}
+
+
+$( window ).resize(function() {
+  var windowhoehe = $(window).height();
+var windowbreite = $(window).width();
+drawtree();
+});
+
+
 
 
 $( "#derKnopf" ).click(function() {
+  drawtree();
 });
 
 
